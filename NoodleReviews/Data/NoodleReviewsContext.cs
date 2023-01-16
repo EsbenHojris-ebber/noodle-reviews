@@ -19,13 +19,13 @@ namespace NoodleReviews.Data
         public DbSet<NoodleReviews.Models.NoodlePack> NoodlePack { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        [
+        {
             modelBuilder
                 .Entity<NoodlePack>()
                 .Property(e => e.Grade)
                 .HasConversion<string>();
                 
-        ]
+        }
 
         public override void Dispose()
         {
