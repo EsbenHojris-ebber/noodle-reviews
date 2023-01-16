@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using NoodleReviews.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<NoodleReviewsContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("NoodleReviewsContext") ?? throw new InvalidOperationException("Connection string 'NoodleReviewsContext' not found.")));
 
 var app = builder.Build();
 

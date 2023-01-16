@@ -1,0 +1,55 @@
+@page
+@model NoodleReviews.Pages.NoodlePacks.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>NoodlePack</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="NoodlePack.Id" />
+            <div class="form-group">
+                <label asp-for="NoodlePack.Name" class="control-label"></label>
+                <input asp-for="NoodlePack.Name" class="form-control" />
+                <span asp-validation-for="NoodlePack.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoodlePack.BarCode" class="control-label"></label>
+                <input asp-for="NoodlePack.BarCode" class="form-control" />
+                <span asp-validation-for="NoodlePack.BarCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoodlePack.Notes" class="control-label"></label>
+                <input asp-for="NoodlePack.Notes" class="form-control" />
+                <span asp-validation-for="NoodlePack.Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoodlePack.ReviewDate" class="control-label"></label>
+                <input asp-for="NoodlePack.ReviewDate" class="form-control" />
+                <span asp-validation-for="NoodlePack.ReviewDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoodlePack.Grade" class="control-label"></label>
+                <select asp-for="NoodlePack.Grade" asp-items="Html.GetEnumSelectList<NoodleReviews.Models.Grade>()" class="form-control"></select>
+                <span asp-validation-for="NoodlePack.Grade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
