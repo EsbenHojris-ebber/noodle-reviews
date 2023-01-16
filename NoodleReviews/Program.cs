@@ -6,20 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-/*
-if (builder.Environment.IsDevelopment())
-{
-*/
-    builder.Services.AddDbContext<NoodleReviewsContext>(options =>
-        options.UseSqlite(builder.Configuration.GetConnectionString("NoodleReviewsContext") ?? throw new InvalidOperationException("Connection string 'NoodleReviewsContext' not found.")));
-/*
-}
-else
-{
-    builder.Services.AddDbContext<NoodleReviewsContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("NoodleReviewsContext") ?? throw new InvalidOperationException("Connection string 'NoodleReviewsContext' not found.")));
-}
-*/
+builder.Services.AddDbContext<NoodleReviewsContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("NoodleReviewsContext") ?? throw new InvalidOperationException("Connection string 'NoodleReviewsContext' not found.")));
 
 var app = builder.Build();
 
