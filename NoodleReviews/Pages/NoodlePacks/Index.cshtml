@@ -5,11 +5,22 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Nuddelanmeldelser</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form>
+    <p>
+        <select asp-for="NoodlePackGrade" asp-items="Model.Grades">
+            <Option value="">Alle</Option>
+        </select>
+        Navn: <input type="text" asp-for="SearchString" \>
+        <input type="submit" value="Filtrér" \>
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
