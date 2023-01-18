@@ -17,6 +17,9 @@ public class NoodlePack
     public DateTime ReviewDate { get; set; }
     [Display(Name = "Karakter")]
     public Grade Grade { get; set; }
+    [Display(Name = "Pris")]
+    [Column(TypeName = "decimal(9, 2)")]
+    public decimal Price { get; set; }
 }
 
 public enum Grade
