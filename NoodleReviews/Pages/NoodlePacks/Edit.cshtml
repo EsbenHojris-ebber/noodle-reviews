@@ -1,4 +1,4 @@
-@page
+@page "{id:int}"
 @model NoodleReviews.Pages.NoodlePacks.EditModel
 
 @{
@@ -38,6 +38,11 @@
                 <label asp-for="NoodlePack.Grade" class="control-label"></label>
                 <select asp-for="NoodlePack.Grade" asp-items="Html.GetEnumSelectList<NoodleReviews.Models.Grade>()" class="form-control"></select>
                 <span asp-validation-for="NoodlePack.Grade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoodlePack.Price" class="control-label"></label>
+                <input asp-for="NoodlePack.Price" class="form-control" />
+                <span asp-validation-for="NoodlePack.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
