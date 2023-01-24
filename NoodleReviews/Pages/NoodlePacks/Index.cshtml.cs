@@ -13,11 +13,13 @@ namespace NoodleReviews.Pages.NoodlePacks
 {
     public class IndexModel : PageModel
     {
-        private readonly NoodleReviews.Data.NoodleReviewsContext _context;
+        private readonly NoodleReviewsContext _context;
+        private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(NoodleReviews.Data.NoodleReviewsContext context)
+        public IndexModel(NoodleReviewsContext context, ILogger<IndexModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public IList<NoodlePack> NoodlePack { get;set; } = default!;
@@ -35,7 +37,6 @@ namespace NoodleReviews.Pages.NoodlePacks
             if (_context.NoodlePack != null)
             {
                 IQueryable<Grade> gradeQuery = from np in _context.NoodlePack
-                                               orderby np.Grade
                                                select np.Grade;
 
                 var noodlePacks = from np in _context.NoodlePack
@@ -50,7 +51,7 @@ namespace NoodleReviews.Pages.NoodlePacks
                 {
                     noodlePacks = noodlePacks.Where(x => x.Grade == res);
                 }
-                Grades = new SelectList(await gradeQuery.Distinct().ToListAsync());
+                Grades = new SelectList(await gradeQuery.Distinct().OrderBy(g => g).ToListAsync());
                 NoodlePack = await noodlePacks.ToListAsync();
             }
         }
